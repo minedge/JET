@@ -8,8 +8,6 @@
 #ifndef INC_OUTPUT_OUTPUT_H_
 #define INC_OUTPUT_OUTPUT_H_
 
-#include "message/message.h"
-
 typedef struct output_data{
 	unsigned int start_motor_pwm;
 	uint8_t glow_plug;

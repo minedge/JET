@@ -8,6 +8,8 @@
 #ifndef INC_SENSOR_DFR0558_H_
 #define INC_SENSOR_DFR0558_H_
 
+#define MAX31855_Addr 0x20
 
+float readCelsius();
 
 #endif /* INC_SENSOR_DFR0558_H_ */

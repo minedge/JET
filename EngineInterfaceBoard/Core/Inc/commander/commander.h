@@ -8,8 +8,6 @@
 #ifndef INC_COMMANDER_COMMANDER_H_
 #define INC_COMMANDER_COMMANDER_H_
 
-#include "message/message.h"
-
 typedef struct ecu_command {
 	uint8_t start_motor;
 	uint8_t glow_plug;

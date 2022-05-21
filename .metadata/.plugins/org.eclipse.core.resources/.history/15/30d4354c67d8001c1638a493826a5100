@@ -1,0 +1,18 @@
+/*
+ * DFR0558.h
+ *
+ *  Created on: May 15, 2022
+ *      Author: mined
+ */
+
+#ifndef INC_SENSOR_DFR0558_H_
+#define INC_SENSOR_DFR0558_H_
+
+#include "stm32g4xx_hal.h"
+#include "stm32g4xx_hal_i2C.h"
+
+#define MAX31855_Addr (0x10)
+
+float readCelsius();
+
+#endif /* INC_SENSOR_DFR0558_H_ */

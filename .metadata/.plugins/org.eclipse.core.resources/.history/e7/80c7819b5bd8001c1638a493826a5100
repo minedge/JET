@@ -1,0 +1,56 @@
+/*
+ * DFR0558.c
+ *
+ *  Created on: May 20, 2022
+ *      Author: mined
+ */
+#include "DFR0558.h"
+
+unsigned char rxbuf[4] = {0};
+
+float readCelsius(){
+
+  readData(0x00 ,4);
+
+  if(rxbuf[3]&0x7){
+	return NAN;
+  }
+
+  if(rxbuf[0]&0x80){
+	rxbuf[0] = 0xff - rxbuf[0];
+	rxbuf[1] = 0xff - rxbuf[1];
+	float temp =  -((((rxbuf[0] << 8)|(rxbuf[1] & 0xfc)) >> 2) + 1) * 0.25;
+	return temp;
+  }
+
+  float temp =(((rxbuf[0] << 8 )| (rxbuf[1] & 0xfc)) >> 2)*0.25;
+
+  return temp;
+}
+
+void readData(int Reg ,int Num){
+  unsigned char i = 0;
+
+  while (Wire.available()){
+	rxbuf[i] = Wire.read();
+	i++;
+  }
+}
+
+bool scan(){
+	uint8_t error, address;
+	int nDevices = 0;
+
+	for(address = 1; address < 127; address++ ) {
+		//Wire.beginTransmission(address);
+		//error = Wire.endTransmission();
+		if (error == 0){
+		  nDevices++;
+		}
+	}
+
+	if (nDevices == 0)
+		return false;
+	else
+		return true;
+}
